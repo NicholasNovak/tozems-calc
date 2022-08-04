@@ -17,50 +17,67 @@
 </head>
 
 <body>
-	<header>
-    		<div class="header_soc">
-        	<a target="blank" href="https://t.me/Nikola_Novak">
-            		<img src="img/telegram.png" alt="Telegram" class="img">
-        	</a>
-        	<a target="blank" href="https://www.facebook.com/nicholas.novakk">
-            		<img src="img/facebook.png" alt="Facebook" class="img">
-        	</a>
-        	<a target="blank" href="https://wa.me/+37120469906">
-            		<img src="img/whatsapp.png" alt="WhatsApp" class="img">
-       		</a>	
-    	</header>
-    <div class="wrapper">
-        <div class="title main_title">Profit from deposits</div>
-        <form id="main_form" action="#">
-            <div class="form_container">
-                <div class="block block-num">
-                    <span class="form_title">Amount of investment</span>
-                    <input autofocus type="number" max="1000000" id="count" value="50">
-                </div>
-                <div class="block block-level">
-                    <span class="form_title">Level of investment</span>
-                    <select class="num" name="Level" id="level">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
-                </div>
-                <div class="block block-btn">
-                    <input class="btn" type="submit" value="Calculate">
-                </div>
+    <div class="wrapper ">
+        <header>
+            <div class="header_soc">
+                <a target="blank" href="https://t.me/Nicholas_Novak/">
+                    <img src="img/telegram.png" alt="Telegram" class="img">
+                </a>
+                <a target="blank" href="https://www.facebook.com/nicholas.novakk/">
+                    <img src="img/facebook.png" alt="Facebook" class="img">
+                </a>
+                <a target="blank" href="https://wa.me/+37120469906/">
+                    <img src="img/whatsapp.png" alt="WhatsApp" class="img">
+                </a>
             </div>
-        </form>
 
-        <!-- <p class="total_result">Profit: $<span class="profit">3.50</span> + $<span class="deposit">50</span> = $<span id="count_total">53.50</span> </p> -->
+        </header>
 
-        <p class="total_result">Total profit: $<span id="count_total">53.50</span></p>
-        <div class="wrap">
-            <a target="blank" href="https://cutt.ly/SK5Hwlt" class="btn button">Register now</a>
+        <div class="main-container">
+            <div class="title main_title ">Profit from deposits</div>
+            <form id="main_form" action="#">
+                <div class="form_container">
+                    <div class="block block-num">
+                        <span class="form_title">Investment amount</span>
+                        <input type="number" max="1000000" id="count" value="50">
+                    </div>
+                    <div class="block block-level">
+                        <span class="form_title">Investment level</span>
+                        <select class="num" name="Level" id="level">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <div class="block block-btn">
+                        <input class="btn button19" type="submit" value="Calculate">
+                    </div>
+                </div>
+            </form>
+
+            <div class="result_container">
+                <table class="iksweb">
+                    <tbody>
+                        <tr>
+                            <td>Income per day</td>
+                            <td>Total income</td>
+                        </tr>
+                        <tr>
+                            <td>$<span>0.25</span></td>
+                            <td>$<span class="count_total">53.50</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="display:none" id="text-warn" class="paragraph">The calculations are made taking into account Stacking</p>
+            </div>
+
+            <div class="wrap">
+                <a target="_blank" href="https://tozems.net/?p=home&ref=94865292" class="btn button">Register now</a>
+            </div>
         </div>
-
-        <script src="./index.js"></script>
-
     </div>
+
+    <script src="./index.js"></script>
 </body>
 
 </html>
