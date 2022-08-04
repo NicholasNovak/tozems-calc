@@ -1,10 +1,13 @@
 const form = document.getElementById('main_form');
 const formCount = document.getElementById('count');
-const formResult = document.getElementById('count_total');
 const level = document.getElementById('level');
+const table = document.querySelector(".iksweb");
+const warn = document.getElementById("text-warn");
 let depositIndex = '';
 let depositLevel = '';
 let countRes = 0;
+let dayRes = 0;
+let mesRes = 0;
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     checker(formCount);
@@ -13,20 +16,19 @@ form.addEventListener('submit', (e) => {
 
 function checker(count) {
     if (count.value < 50) count.value = 50;
-    else if (count.value >= 50 && count.value < 450) {
+    else if (count.value >= 50 && count.value <= 450) {
         depositIndex = 1;
-    } else if (count.value >= 500 && count.value < 3950) {
+    } else if (count.value >= 500 && count.value <= 3950) {
         depositIndex = 2;
-    } else if (count.value >= 4000 && count.value < 9950) {
+    } else if (count.value >= 4000 && count.value <= 9950) {
         depositIndex = 3;
-    } else if (count.value >= 10000 && count.value < 29950) {
+    } else if (count.value >= 10000 && count.value <= 29950) {
         depositIndex = 4;
-    } else if (count.value >= 30000 && count.value < 49950) {
+    } else if (count.value >= 30000 && count.value <= 49950) {
         depositIndex = 5;
     } else if (count.value >= 50000) {
         depositIndex = 6;
     }
-
     depositLevel = level.value;
     calc(+count.value, +depositIndex, +depositLevel);
 }
@@ -43,7 +45,6 @@ function calc(invest, count, lev) {
 }
 
 function oneLevel(invest, depIndex, level) {
-    formResult.textContent = '';
     switch (depIndex) {
         case 1:
             calcProfit(invest, 0.5, 14, level);
@@ -70,7 +71,6 @@ function oneLevel(invest, depIndex, level) {
 }
 
 function secondLevel(invest, depIndex, level) {
-    formResult.textContent = '';
     switch (depIndex) {
         case 1:
             calcProfit(invest, 1.0, 285, level);
@@ -94,12 +94,10 @@ function secondLevel(invest, depIndex, level) {
         default:
             break;
     }
-
 }
 
 
 function thirdLevel(invest, depIndex, level) {
-    formResult.textContent = '';
     switch (depIndex) {
         case 1:
             calcProfit(invest, 1.4, 365, +level);
@@ -128,11 +126,66 @@ function thirdLevel(invest, depIndex, level) {
 
 function calcProfit(invest, percent, days, lv) {
     countRes;
-    if (+lv === 1 || +lv === 2) {
+    dayRes;
+    mesRes;
+    if (+lv === 1) {
+        Math.floor(dayRes = (invest * ((percent * 1) / 100 )));
         Math.floor(countRes = (invest * ((percent * days) / 100)) + invest);
-        formResult.textContent = countRes.toFixed(2);
-    } else if (+lv === 3) {
+        table.innerHTML = 
+        `
+            <tbody>
+                <tr>
+                    <td>Income per day</td>
+                    <td>Total income</td>
+                </tr>
+                <tr>
+                    <td>$<span>${dayRes.toFixed(2)}</span></td>
+                    <td>$<span class="count_total">${countRes.toFixed(2)}</span></td>
+                </tr>
+            </tbody>
+        `
+        warn.style.display = 'none';
+    }
+    else if (+lv === 2) {
+        Math.floor(dayRes = (invest * ((percent * 1) / 100 )));
+        Math.floor(mesRes = (invest * ((percent * 31) / 100 )));
+        Math.floor(countRes = (invest * ((percent * days) / 100)) + invest);
+        table.innerHTML = 
+        `
+            <tbody>
+                <tr>
+                    <td>Income per day</td>
+                    <td>Monthly income</td>
+                    <td>Total income</td>
+                </tr>
+                <tr>
+                    <td>$<span>${dayRes.toFixed(2)}</span></td>
+                    <td>$<span>${mesRes.toFixed(2)}</span></td>
+                    <td>$<span class="count_total">${countRes.toFixed(2)}</span></td>
+                </tr>
+                </tbody>
+        `
+        warn.style.display === 'block' ? true : warn.style.display = 'block';
+    }
+    else if (+lv === 3) {
+        Math.floor(dayRes = (invest * ((percent * 1) / 100 )));
+        Math.floor(mesRes = (invest * ((percent * 31) / 100 )));
         Math.floor(countRes = (invest * ((percent * days) / 100)));
-        formResult.textContent = countRes.toFixed(2);
+        table.innerHTML = 
+        `
+            <tbody>
+                <tr>
+                    <td>Income per day</td>
+                    <td>Monthly income</td>
+                    <td>Total income</td>
+                </tr>
+                <tr>
+                    <td>$<span>${dayRes.toFixed(2)}</span></td>
+                    <td>$<span>${mesRes.toFixed(2)}</span></td>
+                    <td>$<span class="count_total">${countRes.toFixed(2)}</span></td>
+                </tr>
+            </tbody>
+        `
+        warn.style.display === 'block' ? true : warn.style.display = 'block';
     }
 }
