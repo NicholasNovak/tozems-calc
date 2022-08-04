@@ -9,8 +9,8 @@ body {
 }
 
 .wrapper {
+    height: 100vh;
     max-width: 600px;
-    height: calc(100vh - 200px);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -27,12 +27,25 @@ input::-webkit-inner-spin-button {
     /* <-- Apparently some margin are still there even though it's hidden */
 }
 
+.main-container {
+    text-align: center;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 input,
 .num,
 .btn {
     padding: 5px;
     outline: 0;
     border-radius: 5px;
+}
+
+.header_soc a {
+    display: inline-block;
 }
 
 .btn {
@@ -72,10 +85,11 @@ input,
 }
 
 .main_title {
+    text-align: center;
     font-size: 35px;
     padding: 10px;
-    background-color: #eaeaea;
-    border-radius: 25px;
+    background: #4FD1C5 linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%);
+    border-radius: 5px;
 }
 
 header a {
@@ -112,10 +126,10 @@ header {
     font-weight: 700;
     color: #313133;
     background: #4FD1C5;
-    background: linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%);
+    background: linear-gradient(90deg, rgb(58, 250, 52) 0%, rgb(90, 238, 85) 100%);
     border: none;
     border-radius: 1000px;
-    box-shadow: 12px 12px 24px rgba(79, 209, 197, .64);
+    box-shadow: 12px 12px 24px rgba(58, 250, 52, .64);
     transition: all 0.3s ease-in-out 0s;
     cursor: pointer;
     outline: none;
@@ -128,8 +142,8 @@ header {
     border-radius: 1000px;
     min-width: calc(300px + 12px);
     min-height: calc(60px + 12px);
-    border: 6px solid #00FFCB;
-    box-shadow: 0 0 60px rgba(0, 255, 203, .64);
+    border: 6px solid rgba(58, 250, 52, .64);
+    box-shadow: 0 0 60px rgba(58, 250, 52, .64);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -154,13 +168,13 @@ header {
     width: 30px;
     height: 30px;
     border-radius: 100%;
-    border: 6px solid #00FFCB;
+    border: 6px solid rgb(58, 250, 52);
     position: absolute;
     z-index: -1;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: ring 1.5s infinite;
+    /* animation: ring 1.5s infinite; */
 }
 
 .button:hover::after,
@@ -169,15 +183,145 @@ header {
     display: none;
 }
 
-@keyframes ring {
+/* @keyframes ring {
     0% {
         width: 30px;
         height: 30px;
         opacity: 1;
     }
+
     100% {
         width: 250px;
         height: 250px;
         opacity: 0;
+    }
+} */
+
+.button19 {
+    display: inline-block;
+    font-weight: bold;
+    color: #000000;
+    text-decoration: none;
+    text-shadow: 0 -1px rgba(0, 0, 0, .5);
+    user-select: none;
+    padding: .7em 1.5em;
+    border: 1px solid rgb(80, 32, 0);
+    border-radius: 5px;
+    outline: none;
+    background: #4FD1C5 linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%);
+    box-shadow:
+        0 3px 5px #4FD1C5,
+        0 3px 15px rgba(0, 0, 0, .4),
+        inset 0 1px rgba(255, 255, 255, .3),
+        inset 0 0 3px rgba(255, 255, 255, .5);
+    transition: .2s;
+}
+
+.button19:hover {
+    background: #4FD1C5 linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 40%);
+}
+
+.button19:active {
+    background: #4FD1C5 linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 40%);
+    box-shadow:
+        0 2px #4FD1C5,
+        0 1px 6px rgba(0, 0, 0, .4),
+        inset 0 1px rgba(255, 255, 255, .3),
+        inset 0 0 3px rgba(255, 255, 255, .5);
+    -webkit-transform: translate(0, 4px);
+    transform: translate(0, 4px);
+}
+.paragraph {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: red;
+}
+
+
+
+
+
+
+table.iksweb {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    height: auto;
+}
+
+table.iksweb,
+table.iksweb td,
+table.iksweb th {
+    border: 1px solid #595959;
+}
+
+table.iksweb td,
+table.iksweb th {
+    padding: 5px;
+    font-size: 15px;
+}
+
+table.iksweb th {
+    background: #347c99;
+    color: #fff;
+    font-weight: normal;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 600px) {
+
+    .main_title {
+        font-size: 45px;
+    }
+
+    .form_title {
+        font-size: 30px;
+    }
+
+    #count,
+    .num {
+        max-width: 200px;
+        margin: 0 auto;
+        font-size: 25px;
+    }
+
+    .btn.button19 {
+        font-size: 25px;
+    }
+
+    header {
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+    table.iksweb td,
+    table.iksweb th {
+        padding: 10px;
+        font-size: 25px;
     }
 }
